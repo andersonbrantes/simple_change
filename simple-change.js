@@ -60,24 +60,18 @@
             // and this.options
             // you can add more functions like the one below and
             // call them like so: this.yourOtherFunction(this.element, this.options).
-            this.createControls();
-            this.createNavigation();
+            this.createControls(this.options.showControls);
+            this.createNavigation(this.options.showNavigation);
         },
 
-        createControls: function() {
-          $('<div/>',
-            {
-              class: 'sc-controls',
-            }
-          ).appendTo(this.element);
+        createControls: function(showControls) {
+          if (showControls === true)
+            $('<div/>', { class: 'sc-controls' }).appendTo(this.element);
         },
 
-        createNavigation: function() {
-          $('<div/>',
-            {
-              class: 'sc-navigation',
-            }
-          ).appendTo(this.element);
+        createNavigation: function(showNavigation) {
+          if (showNavigation === true)
+            $('<div/>', { class: 'sc-navigation' }).appendTo(this.element);
         }
     };
 
