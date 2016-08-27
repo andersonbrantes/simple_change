@@ -69,8 +69,13 @@
         },
 
         createControls: function(showControls) {
-          if (showControls === true)
-            $('<div/>', { class: 'sc-controls' }).appendTo(this.element);
+          if (showControls === true) {
+            $('<div/>', { class: 'sc-controls' }).prependTo(this.element);
+
+            var controlsContainer = $(this.element).find('.sc-controls');
+            $('<span/>', { class: 'sc-controls-btn sc-prev' }).appendTo(controlsContainer);
+            $('<span/>', { class: 'sc-controls-btn sc-next' }).appendTo(controlsContainer);
+          }
         },
 
         createNavigation: function(showNavigation) {
