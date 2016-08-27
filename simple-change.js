@@ -70,8 +70,25 @@
         },
 
         createNavigation: function(showNavigation) {
-          if (showNavigation === true)
+          if (showNavigation === true) {
+
             $('<div/>', { class: 'sc-navigation' }).appendTo(this.element);
+
+            var navigationContainer = $(this.element).find('sc-navigation');
+            this.createNavigationItems(navigationContainer);
+          }
+        },
+
+        createNavigationItems: function(navigationCont, maxIndex) {
+
+          for(i = 0; i < maxIndex; i++ ) {
+            jQuery('<span/>', {
+              id: 'sc-navigation-item-' + i,
+              class: 'sc-controls-btn sc-navigation-item',
+              'data-item': i,
+            }).appendTo(navigationCont);
+          }
+          navigationCont.find('.sc-navigation-item').first().addClass('active');
         }
     };
 
