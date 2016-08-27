@@ -26,7 +26,7 @@
     // Create the defaults once
     var pluginName = "simpleChange",
         defaults = {
-            itemsPerPage: 4,
+            itemsPerPage: 1,
             showControls: true,
             showNavigation: true,
             navigationPosition: "bottom",
@@ -48,11 +48,15 @@
         this._defaults = defaults;
         this._name = pluginName;
 
+        this.conteudoWidth = $(this.element).width();
+        this.widthItensConteudo = Math.floor(this.conteudoWidth / this.options.itemsPerPage);
+        this.totalItens = $(this.element).find('.sc-item').length;
+        this.maxIndex = Math.ceil(this.totalItens / this.options.itemsPerPage);
+
         this.init();
     }
 
     Plugin.prototype = {
-
         init: function() {
             // Place initialization logic here
             // You already have access to the DOM element and
@@ -74,13 +78,12 @@
 
             $('<div/>', { class: 'sc-navigation' }).appendTo(this.element);
 
-            var navigationContainer = $(this.element).find('sc-navigation');
-            this.createNavigationItems(navigationContainer);
+            var navigationContainer = $(this.element).find('.sc-navigation');
+            this.createNavigationItems(navigationContainer, this.maxIndex);
           }
         },
 
         createNavigationItems: function(navigationCont, maxIndex) {
-
           for(i = 0; i < maxIndex; i++ ) {
             jQuery('<span/>', {
               id: 'sc-navigation-item-' + i,
