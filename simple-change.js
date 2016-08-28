@@ -48,6 +48,7 @@
         this._defaults = defaults;
         this._name = pluginName;
 
+        this.initialIndex = 0;
         this.conteudoWidth = $(this.element).width();
         this.widthItensConteudo = Math.floor(this.conteudoWidth / this.options.itemsPerPage);
         this.totalItens = $(this.element).find('.sc-item').length;
@@ -58,14 +59,11 @@
 
     Plugin.prototype = {
         init: function() {
-            // Place initialization logic here
-            // You already have access to the DOM element and
-            // the options via the instance, e.g. this.element
-            // and this.options
-            // you can add more functions like the one below and
-            // call them like so: this.yourOtherFunction(this.element, this.options).
+
             this.createControls(this.options.showControls);
             this.createNavigation(this.options.showNavigation);
+            this.startChange();
+            this.setStyle();
         },
 
         createControls: function(showControls) {
@@ -97,6 +95,46 @@
             }).appendTo(navigationCont);
           }
           navigationCont.find('.sc-navigation-item').first().addClass('active');
+        },
+
+        startChange: function() {
+          var slider = this;
+          var itemsContainer = $(this.element).find('.sc-items-container');
+
+          $(this.element).find('.sc-controls-btn').on('click', function(){
+
+            if($(this).hasClass('sc-prev')) {
+              if(slider.initialIndex > 0) {
+                slider.initialIndex -= 1;
+              } else {
+                slider.initialIndex = slider.maxIndex - 1;
+              }
+            }
+
+            if($(this).hasClass('sc-next')) {
+              if(slider.initialIndex < (slider.maxIndex - 1)) {
+                slider.initialIndex += 1;
+              } else {
+                slider.initialIndex = 0;
+              }
+            }
+
+            var change = slider.conteudoWidth * slider.initialIndex;
+            console.log(slider.conteudoWidth);
+            left = '-' + change;
+            itemsContainer.css('left', left + 'px');
+
+          });
+        },
+
+        setStyle: function() {
+          var itemsContainer = $(this.element).find('.sc-items-container');
+          itemsContainer.find('.sc-item').css({
+            'width': this.widthItensConteudo
+            // ,
+            // 'padding-left': '10px',
+            // 'padding-right': '10px'
+          });
         }
     };
 
