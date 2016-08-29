@@ -1,3 +1,98 @@
+.slider-home {
+  padding: 0;
+  position: relative;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0;
+  min-height: 380px;
+  overflow: hidden;
+}
+
+.sc-items-container {
+  float: left;
+  white-space: nowrap;
+  // overflow-x: hidden;
+  // overflow-y: hidden;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  position: absolute;
+  left: 0;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.sc-item {
+  margin: 0;
+  box-sizing: border-box;
+  white-space: normal;
+  display: inline-block;
+  vertical-align: top;
+}
+
 .sc-item img {
   max-width: 100%;
+}
+
+.sc-controls {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 9999;
+}
+
+.sc-controls-btn {
+  width: 60px;
+  height: 100%;
+  display: block;
+  cursor: pointer;
+  position: relative;
+}
+
+.sc-controls-btn.position:before {
+  content: '';
+  display: none;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  margin-top: -15px;
+  border-left: 4px solid #181818;
+  border-top: 4px solid #181818;
+  z-index: 8888;
+}
+
+.sc-controls-btn.position:hover:before {
+  display: block;
+}
+
+.sc-controls-btn.position:hover {
+  background: rgba(255, 255, 255, 0.2);
+  display: block;
+}
+
+.sc-controls-btn.sc-next:before {
+  left: 20px;
+  -webkit-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.sc-controls-btn.sc-prev:before {
+  right: 20px;
+  -webkit-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+.sc-next {
+  float: left;
+}
+
+.sc-prev {
+  float: right;
 }
