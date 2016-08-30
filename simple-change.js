@@ -53,6 +53,7 @@
         this.widthItensConteudo = Math.floor(this.conteudoWidth / this.options.itemsPerPage);
         this.totalItens = $(this.element).find('.sc-item').length;
         this.maxIndex = Math.ceil(this.totalItens / this.options.itemsPerPage);
+        $(this.element).addClass('sc-slider');
 
         this.init();
     }
@@ -80,8 +81,11 @@
           if (showNavigation === true) {
 
             $('<div/>', { class: 'sc-navigation' }).appendTo(this.element);
+            var navigation = $(this.element).find('.sc-navigation');
 
-            var navigationContainer = $(this.element).find('.sc-navigation');
+            $('<div/>', { class: 'sc-navigation-cont' }).appendTo(navigation);
+            var navigationContainer = $(this.element).find('.sc-navigation-cont');
+
             this.createNavigationItems(navigationContainer, this.maxIndex);
           }
         },
@@ -100,6 +104,7 @@
         startChange: function() {
           var slider = this;
           var itemsContainer = $(this.element).find('.sc-items-container');
+          var navigationContainer = $(this.element).find('.sc-navigation-cont');
 
           $(this.element).find('.sc-controls-btn').on('click', function(){
 
@@ -123,6 +128,10 @@
             console.log(slider.conteudoWidth);
             left = '-' + change;
             itemsContainer.css('left', left + 'px');
+
+            var navigationItems = navigationContainer.find('.sc-navigation-item');
+            navigationItems.removeClass('active');
+            navigationContainer.find("[data-item='" + slider.initialIndex + "']").addClass('active');
 
           });
         },

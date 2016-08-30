@@ -1,4 +1,4 @@
-.slider-home {
+.sc-slider {
   padding: 0;
   position: relative;
   width: 95%;
@@ -7,6 +7,7 @@
   font-size: 0;
   min-height: 380px;
   overflow: hidden;
+  margin-bottom: 50px;
 }
 
 .sc-items-container {
@@ -95,4 +96,30 @@
 
 .sc-prev {
   float: right;
+}
+
+.sc-navigation {
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
+}
+
+.sc-navigation-cont {
+  display: table;
+  margin: 0 auto;
+}
+
+.sc-navigation-item {
+  width: 14px;
+  height: 14px;
+  display: block;
+  border-radius: 50%;
+  float: left;
+  margin-left: 18px;
+  background-color: #f4f4f4;
+  cursor: pointer;
+}
+
+.sc-navigation-item.active {
+  background-color: red;
 }
