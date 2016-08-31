@@ -24,6 +24,7 @@
   -webkit-transition: all 0.4s ease-in-out;
   -moz-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
+  z-index: 7777;
 }
 
 .sc-item {
@@ -43,7 +44,7 @@
   height: 100%;
   position: absolute;
   top: 0;
-  z-index: 9999;
+  z-index: 8888;
 }
 
 .sc-controls-btn {
@@ -102,6 +103,7 @@
   width: 100%;
   position: absolute;
   bottom: 10px;
+  z-index: 9999;
 }
 
 .sc-navigation-cont {

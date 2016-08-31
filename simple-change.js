@@ -124,8 +124,12 @@
               }
             }
 
+            if($(this).hasClass('sc-navigation-item')) {
+              slider.initialIndex = $(this).data('item');
+            }
+
             var change = slider.conteudoWidth * slider.initialIndex;
-            console.log(slider.conteudoWidth);
+
             left = '-' + change;
             itemsContainer.css('left', left + 'px');
 
